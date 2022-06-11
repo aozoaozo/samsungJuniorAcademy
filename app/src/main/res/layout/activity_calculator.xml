@@ -37,10 +37,10 @@
         android:id="@+id/button_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/button_2"
+        android:layout_below="@id/calculate_result_textView"
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
-        android:layout_below="@id/calculate_result_textView"
+        android:layout_toRightOf="@id/button_2"
         android:text="3" />
 
     <Button
@@ -57,9 +57,9 @@
         android:id="@+id/button_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/button_3"
+        android:layout_below="@id/button_plus"
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
-        android:layout_below="@id/button_plus"
+        android:layout_toRightOf="@id/button_3"
         android:text="C" />
 </RelativeLayout>

@@ -49,11 +49,25 @@ public class CalculatorActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText("2");
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 2;
+                textViewResult.setText(value.toString());
             }
         });
 
         button3= findViewById(R.id.button_3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 3;
+                textViewResult.setText(value.toString());
+            }
+        });
         buttonPlus = findViewById(R.id.button_plus);
 
         buttonClear = findViewById(R.id.button_clear);
