@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class CalculatorActivity extends AppCompatActivity {
 
     double result = 0;
@@ -16,6 +15,7 @@ public class CalculatorActivity extends AppCompatActivity {
     Button button2;
     Button button3;
     Button buttonPlus;
+    Button buttonClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +55,13 @@ public class CalculatorActivity extends AppCompatActivity {
 
         button3= findViewById(R.id.button_3);
         buttonPlus = findViewById(R.id.button_plus);
+
+        buttonClear = findViewById(R.id.button_clear);
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewResult.setText("0");
+            }
+        });
     }
 }
