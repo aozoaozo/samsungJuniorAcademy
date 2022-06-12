@@ -16,6 +16,10 @@ public class CalculatorActivity extends AppCompatActivity {
     Button button3;
     Button buttonPlus;
     Button buttonClear;
+    Button buttonEqual;
+
+    int First;
+    String operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +72,22 @@ public class CalculatorActivity extends AppCompatActivity {
                 textViewResult.setText(value.toString());
             }
         });
+
         buttonPlus = findViewById(R.id.button_plus);
+        buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1. 기존 입력값을 First 에 저장.
+                CharSequence text = textViewResult.getText();
+                First = Integer.valueOf((String) text);
+
+                //2. operator 에 + 를 저장
+                operator = "+";
+
+                //3. textView 의 값을 0으로 초기화
+                textViewResult.setText("0");
+            }
+        });
 
         buttonClear = findViewById(R.id.button_clear);
         buttonClear.setOnClickListener(new View.OnClickListener() {
@@ -77,5 +96,32 @@ public class CalculatorActivity extends AppCompatActivity {
                 textViewResult.setText("0");
             }
         });
+
+
+        buttonEqual = findViewById(R.id.button_equel);
+        buttonEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1 textView 의 숫자를 가져옴
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+
+                // 2 First 와 operator 를 꺼내와서 연산
+                int result = 0;
+                if(operator == "+") {
+                    result = First + value;
+                } else if (operator == "-") {
+                    result = First - value;
+                } else if (operator == "*") {
+                    result = First * value;
+                } else if (operator == "/") {
+                    result = First / value;
+                }
+
+                // 3 결과를 textView 에 표시
+                textViewResult.setText(""+result);
+            }
+        });
+
     }
 }
