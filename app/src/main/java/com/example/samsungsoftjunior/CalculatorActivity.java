@@ -14,9 +14,18 @@ public class CalculatorActivity extends AppCompatActivity {
     Button button1;
     Button button2;
     Button button3;
+    Button button4;
+    Button button5;
+    Button button6;
+    Button button7;
+    Button button8;
+    Button button9;
     Button buttonPlus;
     Button buttonClear;
     Button buttonEqual;
+    Button buttonMin;
+    Button buttonX;
+    Button buttonNanu;
 
     int First;
     String operator;
@@ -73,6 +82,78 @@ public class CalculatorActivity extends AppCompatActivity {
             }
         });
 
+        button4 = findViewById(R.id.button_4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 4;
+                textViewResult.setText(value.toString());
+            }
+        });
+
+        button5 = findViewById(R.id.button_5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 5;
+                textViewResult.setText(value.toString());
+            }
+        });
+
+        button6 = findViewById(R.id.button_6);
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 6;
+                textViewResult.setText(value.toString());
+            }
+        });
+
+        button7 = findViewById(R.id.button_7);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 7;
+                textViewResult.setText(value.toString());
+            }
+        });
+
+        button8 = findViewById(R.id.button_8);
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 8;
+                textViewResult.setText(value.toString());
+            }
+        });
+
+        button9 = findViewById(R.id.button_9);
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = textViewResult.getText();
+                Integer value = Integer.valueOf((String) text);
+                value = value * 10;
+                value = value + 9;
+                textViewResult.setText(value.toString());
+            }
+        });
+
         buttonPlus = findViewById(R.id.button_plus);
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +201,51 @@ public class CalculatorActivity extends AppCompatActivity {
 
                 // 3 결과를 textView 에 표시
                 textViewResult.setText(""+result);
+            }
+        });
+        buttonMin = findViewById(R.id.button_min);
+        buttonMin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1. 기존 입력값을 First 에 저장.
+                CharSequence text = textViewResult.getText();
+                First = Integer.valueOf((String) text);
+
+                //2. operator 에 + 를 저장
+                operator = "-";
+
+                //3. textView 의 값을 0으로 초기화
+                textViewResult.setText("0");
+            }
+        });
+        buttonX = findViewById(R.id.button_x);
+        buttonX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1. 기존 입력값을 First 에 저장.
+                CharSequence text = textViewResult.getText();
+                First = Integer.valueOf((String) text);
+
+                //2. operator 에 + 를 저장
+                operator = "*";
+
+                //3. textView 의 값을 0으로 초기화
+                textViewResult.setText("0");
+            }
+        });
+        buttonNanu = findViewById(R.id.button_nanu);
+        buttonNanu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1. 기존 입력값을 First 에 저장.
+                CharSequence text = textViewResult.getText();
+                First = Integer.valueOf((String) text);
+
+                //2. operator 에 + 를 저장
+                operator = "/";
+
+                //3. textView 의 값을 0으로 초기화
+                textViewResult.setText("0");
             }
         });
 
