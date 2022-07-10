@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Display;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class BoundBallActivity extends AppCompatActivity {
 
     ImageView myImage;
+    Button myStartButton;
 
     Handler handler;
 
@@ -28,7 +31,7 @@ public class BoundBallActivity extends AppCompatActivity {
 
         initValue();
 
-        setTimer();
+
     }
 
     private void initValue() {
@@ -69,5 +72,14 @@ int a = 0;
 
     private void initView() {
         myImage = findViewById(R.id.my_image);
+        myStartButton = findViewById(R.id.start_button);
+
+        myStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTimer();
+            }
+        });
+
     }
 }
