@@ -37,10 +37,10 @@ public class BoundBallActivity extends AppCompatActivity {
     private void initValue() {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point(); display.getRealSize(size);
-        screenWidth = size.x; // 화면의 너비
+        screenWidth = size.x - 200; // 화면의 너비
         screenHeight = size.y - 800; // 화면의 높이
     }
-
+int b = 0;
 int a = 0;
     private void setTimer() {
         handler = new Handler(Looper.getMainLooper());
@@ -60,12 +60,24 @@ int a = 0;
                         a += 1;
                     }else if(a == 0) {
                         myImage.setY(myImage.getY() + 10);
-                    }//이게되네ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                    }
+
+                    if(b == 1 && myImage.getX() < 0) {
+                        b -= 1;
+                    }else if(b == 1) {
+                        myImage.setX(myImage.getX() - 10);
+
+                    }else if(myImage.getX() >= screenWidth) {
+                        b += 1;
+                    }else if(b == 0) {
+                        myImage.setX(myImage.getX() + 10);
+                    }
+
                     // else if 현재의 Y 좌표가 화면의 높이보다 크면 변화값을 감소
 
                     // 생각해볼 부분 : 어떻게 방향성을 유지 할것인가?
 
-                    handler.postDelayed(this,100); // 2) ms (천분의 1초) 100ms 후에 반복 : 0.1초
+                    handler.postDelayed(this,10); // 2) ms (천분의 1초) 100ms 후에 반복 : 0.1초
                 }
             }, 0, 0); // 3)
     }
