@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -37,11 +38,15 @@ public class BoundBallActivity extends AppCompatActivity {
     private void initValue() {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point(); display.getRealSize(size);
-        screenWidth = size.x - 200; // 화면의 너비
+        screenWidth = size.x; // 화면의 너비
         screenHeight = size.y - 800; // 화면의 높이
     }
+
 int b = 0;
 int a = 0;
+
+float speed = 10;
+
     private void setTimer() {
         handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
@@ -50,27 +55,32 @@ int a = 0;
                     //myImage.setY(myImage.getY() + 10); // 1) 이미지뷰의 좌표를 현재의 좌표를 가져와서 +10 설정
                     // 위의 명령 대신 다음과 같은 작업이 필요.
 
+                    if( speed >= 0) {
+                        speed = speed - 0.01f;
+                    }
+                    Log.d("aozo", "aozo Data speed : " + speed);
+
                     // if 현재의 Y 좌표가 0보다 크고 화면 높이 보다 변화값을 증가
                     if(a == 1 && myImage.getY() < 0) {
                         a -= 1;
                     }else if(a == 1) {
-                        myImage.setY(myImage.getY() - 10);
+                        myImage.setY( (myImage.getY() - speed));
 
                     }else if(myImage.getY() >= screenHeight) {
                         a += 1;
                     }else if(a == 0) {
-                        myImage.setY(myImage.getY() + 10);
+                        myImage.setY((myImage.getY() + speed));
                     }
 
                     if(b == 1 && myImage.getX() < 0) {
                         b -= 1;
                     }else if(b == 1) {
-                        myImage.setX(myImage.getX() - 10);
+                        myImage.setX(myImage.getX() - speed);
 
                     }else if(myImage.getX() >= screenWidth) {
                         b += 1;
                     }else if(b == 0) {
-                        myImage.setX(myImage.getX() + 10);
+                        myImage.setX(myImage.getX() + speed);
                     }
 
                     // else if 현재의 Y 좌표가 화면의 높이보다 크면 변화값을 감소
@@ -89,6 +99,8 @@ int a = 0;
         myStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                speed = 10;
+                screenWidth = screenWidth - myImage.getWidth();
                 setTimer();
             }
         });
